@@ -1,0 +1,46 @@
+{
+  "name": "firststep-fitness",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "client:install": "cd ./client && npm i",
+    "client:dev": "cd ./client && npm run dev",
+    "client:build": "cd ./client && npm run build",
+    "server:install": "cd ./server && npm i",
+    "server:dev": "cd ./server && npm run dev",
+    "server:build": "cd ./server && npm run build",
+    "dev": "concurrently \"npm run server:dev\" \"wait-on tcp:3333 && npm run client:dev\"",
+    "seed": "cd ./server && npm run seed",
+    "start": "node ./server/dist/server.js",
+    "render:install": "cd ./server && npm i",
+    "install": "cd ./server && npm i && cd ../client && npm i",
+    "test:dev": "concurrently \"npm run dev\" \"wait-on tcp:5173 && cd ./client && npm run cypress:open\"",
+    "cypress:test": "cd ./client && npm run cypress:run",
+    "test": "start-server-and-test start http://localhost:10000 cypress:test",
+    "prep": "npm run client:build && npm run server:build"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/react-bootstrap": "^0.32.37",
+    "concurrently": "^9.1.0",
+    "start-server-and-test": "^2.0.8",
+    "wait-on": "^8.0.1"
+  },
+  "dependencies": {
+    "@apollo/client": "^3.11.10",
+    "@apollo/server": "^4.11.2",
+    "@types/express": "^5.0.0",
+    "@types/react": "^18.3.12",
+    "@types/react-dom": "^18.3.1",
+    "@types/react-router-dom": "^5.3.3",
+    "@vitejs/plugin-react": "^4.3.4",
+    "bootstrap": "^5.3.3",
+    "express": "^4.21.1",
+    "react": "^18.3.1",
+    "react-bootstrap": "^2.10.6",
+    "react-router-dom": "^7.0.1"
+  }
+}
